@@ -1,0 +1,11 @@
+// .form-control.box-shadow-none:focus {
+//     box-shadow: none;
+// }
+
+.form-control:focus{
+    box-shadow: none;
+}
+
+.invalid-input{
+    border-color: #dc3545;
+}

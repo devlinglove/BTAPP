@@ -1,0 +1,29 @@
+<p>login works!</p>
+<form 
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmitForm()"
+>
+    <label for="email">Email</label>
+    <input 
+        class="form-control" 
+        type="text" 
+        name="email" 
+        id="email"
+        formControlName="email" 
+        pattern="^\w+([\.\-]?\w+)*@\w+([\.\-]?\w+)*(\.\w{2,3})+$"
+        [ngClass]="{
+            'invalid-input': emailField.invalid && (emailField.dirty || emailField.touched)
+        }"
+    />
+
+    <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)">
+        <div *ngIf="emailField.hasError('required')">Email is required</div>
+        <div *ngIf="emailField.hasError('pattern')">Email is not valid</div>
+    </div>
+
+    <label for="password">Password</label>
+    <input id="password" type="password" name="password" formControlName="password"  />
+
+
+    <button [disabled]="!loginForm.valid" type="submit">Save</button>
+</form>
