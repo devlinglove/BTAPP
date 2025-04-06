@@ -5,26 +5,15 @@
         autocomplete="false"
     >
     <div class="mb-3">
-        <label class="form-label" for="email">Email</label>
-        <input 
-            class="form-control" 
-            type="text" 
-            name="email" 
-            id="email"
-            formControlName="email" 
-            pattern="^\w+([\.\-]?\w+)*@\w+([\.\-]?\w+)*(\.\w{2,3})+$"
-            [ngClass]="{
-                'invalid-input': emailField.invalid && (emailField.dirty || emailField.touched)
-            }"
-        />
-        <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)">
-            <div *ngIf="emailField.hasError('required')">Email address is required</div>
-            <div *ngIf="emailField.hasError('pattern')">Email address is not valid</div>
-        </div>
+        <app-form-input-email
+            [parentForm]="loginForm"
+            formFieldName="email"
+        >
+        </app-form-input-email>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label" for="password">Password</label>
+    <div class="mb-4">
+        <!-- <label class="form-label" for="password">Password</label>
         <input 
             class="form-control"
             type="password" 
@@ -38,13 +27,25 @@
 
         <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)">
             <div *ngIf="passwordField.hasError('required')">Password is required</div>
-        </div>
-        
+        </div> -->
+        <app-form-input-password
+            [parentForm]="loginForm"
+            formFieldName="password"
+        >
+        </app-form-input-password>
     </div>
    
-    <button class="w-100 btn btn-primary" [disabled]="!loginForm.valid" type="submit">
-        Login in to your account
-    </button>
+    <div class="d-grid">
+        <button 
+            class="btn btn-primary btapp-btn-primary" 
+            [disabled]="!loginForm.valid" 
+            type="submit"
+            
+        >
+            Login in to your account
+        </button>
+    </div>
+    
     </form>
 </div>
 
