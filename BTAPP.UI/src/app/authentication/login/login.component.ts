@@ -27,6 +27,10 @@ export class LoginComponent implements OnInit{
 		return this.loginForm.get( 'email' ) as FormControl;
 	}
 
+  get passwordField(): FormControl {
+		return this.loginForm.get( 'password' ) as FormControl;
+	}
+
   
 
   onSubmitForm(){
